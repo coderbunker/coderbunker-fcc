@@ -21,17 +21,14 @@ const getFromGoogle = () => new Promise((resolve, reject) => {
         name: users[i][0],
         username: users[i][1],
         country: users[i][2],
-        score: '',
-        streak: '',
-        image: '',
-        certificate: '',
+        flag: users[i][11],
       });
     }
     resolve(newUsers);
   });
 });
 
-const scrape = (fccUsername, name, country) => new Promise(async (resolve, reject) => {
+const scrape = (fccUsername, name, country, flag) => new Promise(async (resolve, reject) => {
   try {
     const html = await axios.get(`http://www.freecodecamp.com/${fccUsername}`);
     const $ = cheerio.load(html.data);
@@ -48,6 +45,7 @@ const scrape = (fccUsername, name, country) => new Promise(async (resolve, rejec
       image,
       certificate,
       score,
+      flag,
     };
     resolve(newObj);
   } catch (e) {
@@ -58,7 +56,7 @@ const scrape = (fccUsername, name, country) => new Promise(async (resolve, rejec
 const update = () => new Promise(async (resolve, reject) => {
   try {
     const userList = await getFromGoogle();
-    const promises = userList.map(user => scrape(user.username, user.name, user.country));
+    const promises = userList.map(user => scrape(user.username, user.name, user.country, user.flag));
     const allUsers = await Promise.all(promises);
     resolve(allUsers);
   } catch (e) {

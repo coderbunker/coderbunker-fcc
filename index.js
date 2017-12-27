@@ -32,7 +32,12 @@ setInterval(writeInFile, 1000 * 60 * 60);
 
 // Manually update users
 app.get('/manual', async (req, res) => {
-  res.send(await writeInFile());
+  try {
+    await writeInFile();
+    res.send('updated');
+  } catch (e) {
+    res.send(e);
+  }
 });
 
 

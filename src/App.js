@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { Loader } from 'semantic-ui-react';
 
 import './App.css';
-import './flag-icon-css/css/flag-icon.css';
+import 'semantic-ui-css/semantic.min.css';
 
-const host = 'http://localhost:1234';
+const host = 'http://192.168.31.215:1234';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       users: [],
+      loadingUsers: false,
     };
   }
 
@@ -25,10 +27,11 @@ class App extends Component {
   }
 
   manualUpdate = async () => {
-    console.log('clicked');
+    this.setState({ loadingUsers: true });
     try {
       const response = await axios.get(`${host}/manual`);
       console.log(response);
+      this.setState({ loadingUsers: false });
     } catch (e) {
       console.error(e);
     }
@@ -61,10 +64,10 @@ class App extends Component {
               {this.state.users.sort((a, b) => b.score - a.score).map((user, index) => (
                 <tr key={index}>
                   {user.certificate ? <th className="badge" /> : <th />}
-                  <th className="rank">{index + 1}</th>
-                  <th className="image"><img src={user.image} alt="" /></th>
+                  <th className="rank">{index + 1}.</th>
+                  <th className="image"><img className="user-image" src={user.image} alt="" /></th>
                   <th className="name">{user.name}</th>
-                  <th><span className={`flag-icon flag-icon-${user.country}`} /></th>
+                  <th><img className="flag-icon" src={user.flag} alt="" /></th>
                   <th className="score">{user.score}</th>
                   <th className="streak">{user.streak}</th>
                 </tr>))}
@@ -72,7 +75,7 @@ class App extends Component {
           </table>
         </div>
         <div className="bottom">
-          <li onClick={() => this.manualUpdate()}>Update users</li>
+          <li onClick={() => this.manualUpdate()}>Update users {this.state.loadingUsers ? <Loader active inline size="tiny" /> : null}</li>
         </div>
       </div>
     );
