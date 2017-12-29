@@ -3,10 +3,10 @@ import axios from 'axios';
 import moment from 'moment';
 import { Loader } from 'semantic-ui-react';
 
-import './App.css';
 import 'semantic-ui-css/semantic.min.css';
+import './App.css';
 
-const host = 'http://192.168.31.215:1234';
+const host = 'http://localhost:1234';
 
 class App extends Component {
   constructor() {
