@@ -7,6 +7,7 @@ const util = require('util');
 
 const app = express();
 const read = util.promisify(fs.readFile);
+const path = require('path');
 
 const promises = require('./promises.js');
 
