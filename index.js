@@ -27,7 +27,7 @@ const writeInFile = async () => {
   }
 };
 
-setInterval(writeInFile, 1000 * 60 * 60);
+// setInterval(writeInFile, 1000 * 60 * 60);
 
 
 // Manually update users

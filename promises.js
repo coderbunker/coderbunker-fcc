@@ -3,6 +3,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 require('dotenv').config();
 
+function rowToObject(val, lab) {
+  const o = {};
+  for (let i = 0; i < lab.length; i += 1) {
+    o[lab[i]] = val[i];
+  }
+  return o;
+}
+
 const getFromGoogle = () => new Promise((resolve, reject) => {
   const sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
@@ -14,17 +22,17 @@ const getFromGoogle = () => new Promise((resolve, reject) => {
       reject(err);
       return;
     }
-    const users = response.values.filter(item => item[1]);
-    const newUsers = [];
-    for (let i = 1; i < users.length; i++) {
-      newUsers.push({
-        name: users[i][0],
-        username: users[i][1],
-        country: users[i][2],
-        flag: users[i][11],
-      });
-    }
-    resolve(newUsers);
+    const usersObj = response.values
+      .map(row => rowToObject(row, response.values[0])).splice(1)
+      .filter(user => user.freecodecamp)
+      .map(user => ({
+        name: user.First,
+        username: user.freecodecamp,
+        country: user.cc,
+        flag: user.flag,
+      }));
+    console.log(usersObj);
+    resolve(usersObj);
   });
 });
 

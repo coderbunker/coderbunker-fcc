@@ -6,7 +6,7 @@ import { Loader } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
-const host = 'http://localhost:1234';
+const host = 'http://10.1.2.33:1234';
 
 class App extends Component {
   constructor() {
@@ -32,6 +32,7 @@ class App extends Component {
       const response = await axios.get(`${host}/manual`);
       console.log(response);
       this.setState({ loadingUsers: false });
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
@@ -51,7 +52,7 @@ class App extends Component {
           <table>
             <thead>
               <tr className="table-header">
-                <th />
+                {/* <th /> */}
                 <th className="rank-head">#</th>
                 <th className="image" />
                 <th className="name-head">co-learner</th>
@@ -63,10 +64,10 @@ class App extends Component {
             <tbody>
               {this.state.users.sort((a, b) => b.score - a.score).map((user, index) => (
                 <tr key={index}>
-                  {user.certificate ? <th className="badge" /> : <th />}
+                  {/* {user.certificate ? <th className="badge" /> : <th />} */}
                   <th className="rank">{index + 1}.</th>
                   <th className="image"><img className="user-image" src={user.image} alt="" /></th>
-                  <th className="name">{user.name}</th>
+                  <th className="name">{user.name} {user.certificate ? <span className="badge">&nbsp;&nbsp;</span> : null}</th>
                   <th><img className="flag-icon" src={user.flag} alt="" /></th>
                   <th className="score">{user.score}</th>
                   <th className="streak">{user.streak}</th>
