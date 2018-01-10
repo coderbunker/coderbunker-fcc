@@ -1,0 +1,153 @@
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Space Mono', 'Helvetica', 'Lato', sans-serif;
+        color: #173400;
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .body {
+        margin: 2%;
+    }
+
+    .flag-icon {
+        border: 1px solid rgba(149,152,154,0.2);
+        height: 17px;
+        width: 22px;
+    }
+
+
+    .header {
+        height: 120px;
+        background: url('images/banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        background-position: center;
+    }
+
+    .info {
+        margin: 3%;
+        padding-bottom: 10px;
+    }
+
+    .info li {
+        list-style: none;
+        float: left;
+        width: 50%;
+        font-size: 15px;
+        color: #990001;
+        /*font-family: 'Montserrat', sans-serif;*/
+        font-weight: bold;
+        
+    }
+
+    .right {
+        text-align: right;
+    }
+
+
+    .user-image {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        margin-left: 5px;
+        /*margin-right: 3px;*/
+    }
+
+    table {
+        width: 100%;
+        font-size: 15px;
+        border:0; 
+        border-collapse: separate;
+        border-spacing: 0 
+    }
+
+    .table-header {
+        line-height: 25px;
+    }
+
+    thead tr th{
+        border-bottom: 1px solid black; 
+    } 
+
+    tbody:before {
+        content: '';
+        display: block;
+        height: 10px;
+    }
+
+
+    th {
+        padding: 2px;
+        text-align: left;
+        font-weight: 400;
+
+    }
+
+    .name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .rank {
+        text-align: right;
+    }
+
+    .score, .streak {
+        font-size: 13px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .badge {
+        background: url('images/badge.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+        background-position: center;
+
+    }
+
+    .name-head, .score-head, .streak-head {
+        font-size: 12px;
+        color: black;
+        font-weight: bold;
+        /*font-family: 'Montserrat', sans-serif;*/
+    }
+
+    .score-head, .streak-head {
+        text-align: center;
+    }
+
+    .rank-head {
+        color: black;
+        font-size: 14px;
+        /*font-family: 'Montserrat', sans-serif;*/
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .bottom {
+        margin-top: 10px;
+        text-align: center;
+        height: 40px;
+        /* border-top: 1px solid grey; */
+        background: #e0e0e0;
+    }
+
+    .bottom li {
+        list-style: none;
+        padding-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+/* } */
