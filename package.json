@@ -7,6 +7,7 @@
     },
     "scripts": {
         "start": "node server",
+        "dev": "concurrently \"yarn start\" \"cd react-ui/ && yarn start\"",
         "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
     },
     "cacheDirectories": [

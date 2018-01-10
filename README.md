@@ -7,22 +7,31 @@ Allows you to see the progress of each CoderBunker member.
 Install Dependencies
 
 ```
-$ yarn install
+$ yarn install && cd react-ui && yarn install && cd ..
 ```
 
 Add your google api key in .env file (see .env.example file)
 
 
-Run
+### Development
+
+Run node back and react ui
 
 ```
-$ npm start
+$ yarn dev
 ```
 
 ## Update users
 
 To manually update users just click 'Update users' on the bottom of the page.
 
+
+## Deploying
+
+In App.js use host with empty strings, then
+```
+$ git push heroku master
+```
 
 ## Built With
 
