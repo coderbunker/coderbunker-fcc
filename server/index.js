@@ -52,6 +52,10 @@ app.get('/getUsers', async (req, res) => {
   }
 });
 
+app.get('*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
+
 const port = process.env.PORT || 1234;
 
 app.listen(port, () => {
