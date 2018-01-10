@@ -6,7 +6,8 @@ import { Loader } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
-const host = 'http://10.1.2.33:1234';
+// const host = 'http://localhost:1234';
+const host = '';
 
 class App extends Component {
   constructor() {
