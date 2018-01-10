@@ -12,6 +12,7 @@ const promises = require('./promises.js');
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 
 const writeInFile = async () => {
