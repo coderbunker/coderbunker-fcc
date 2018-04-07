@@ -67,17 +67,26 @@ class App extends Component {
                 <tr key={index}>
                   {/* {user.certificate ? <th className="badge" /> : <th />} */}
                   <th className="rank">{index + 1}.</th>
-                  <th className="image"><img className="user-image" src={user.image} alt="" /></th>
-                  <th className="name">{user.name} {user.certificate ? <span className="badge">&nbsp;&nbsp;</span> : null}</th>
-                  <th><img className="flag-icon" src={user.flag} alt="" /></th>
+                  <th className="image">
+                    <img className="user-image" src={user.image} alt="" />
+                  </th>
+                  <th className="name">
+                    {user.name} {user.certificate ? <span className="badge">&nbsp;&nbsp;</span> : null}
+                  </th>
+                  <th>
+                    <img className="flag-icon" src={user.flag} alt="" />
+                  </th>
                   <th className="score">{user.score}</th>
                   <th className="streak">{user.streak}</th>
-                </tr>))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         <div className="bottom">
-          <li onClick={() => this.manualUpdate()}>Update users {this.state.loadingUsers ? <Loader active inline size="tiny" /> : null}</li>
+          <li onClick={() => this.manualUpdate()}>
+            Update users {this.state.loadingUsers ? <Loader active inline size="tiny" /> : null}
+          </li>
         </div>
       </div>
     );

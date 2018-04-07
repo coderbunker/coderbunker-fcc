@@ -9,17 +9,16 @@ const app = express();
 const read = util.promisify(fs.readFile);
 const path = require('path');
 
-const promises = require('./promises.js');
+const requests = require('./requests.js');
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-
 const writeInFile = async () => {
   try {
-    const users = await promises.update();
-    fs.writeFile('users.txt', JSON.stringify(users, null, 2), (err) => {
+    const users = await requests.update();
+    fs.writeFile('users.txt', JSON.stringify(users, null, 2), err => {
       if (err) throw err;
       console.log('users updated');
       return 'users updated';
@@ -30,7 +29,6 @@ const writeInFile = async () => {
 };
 
 // setInterval(writeInFile, 1000 * 60 * 60);
-
 
 // Manually update users
 app.get('/manual', async (req, res) => {
@@ -43,7 +41,6 @@ app.get('/manual', async (req, res) => {
   }
 });
 
-
 app.get('/getUsers', async (req, res) => {
   try {
     const users = await read('users.txt');
@@ -53,7 +50,7 @@ app.get('/getUsers', async (req, res) => {
   }
 });
 
-app.get('*', function (request, response) {
+app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 
